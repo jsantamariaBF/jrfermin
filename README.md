@@ -29,6 +29,11 @@ npm run build
 ```
 
 ### Firabase
+
+```sh
+firebase login
+```
+
 ```sh
 firebase deploy
 ```
