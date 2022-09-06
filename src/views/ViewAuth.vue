@@ -16,96 +16,142 @@
         </ul>
     </div>
     <!-- Login -->
-    <form 
-        class="has-background-light"
-        @submit.prevent="onSubmit"
-    >
-        <div 
-            v-if="!register"
+    <div class="notification is-flex is-justify-content-center">
+        <form 
+            class="has-background-white box"
+            @submit.prevent="onSubmit"
+            style="width: 20rem;"
         >
-            <div class="field">
-                <p class="control has-icons-left has-icons-right">
-                    <label class="label">Email</label>
-                    <input 
-                        v-model="login_credentials.login_email"
-                        class="input" 
-                        type="email" 
-                        placeholder="Email"
-                        required
-                    >
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-envelope"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                        <i class="fas fa-check"></i>
-                    </span>
-                </p>
-            </div>
-            <div class="field">
-                <p class="control has-icons-left">
-                    <label class="label">Password</label>
-                    <input 
-                        v-model="login_credentials.login_password"
-                        class="input" 
-                        type="password" 
-                        placeholder="Password"
-                        required
-                    >
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-lock"></i>
-                    </span>
-                </p>
-            </div>
-        </div>
-       
-    <!-- Register -->
-        <div v-else>
-            <div class="field">
-                <label class="label">Email</label>
-                <div class="control has-icons-left has-icons-right">
-                    <input 
-                        
-                        v-model="register_credentials.email"
-                        class="input is-dark" 
-                        type="email" 
-                        placeholder="Email input"
-                    >
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-envelope"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                        <i class="fas fa-exclamation-triangle"></i>
-                    </span>
+            <div 
+                v-if="!register"
+                class=" p-3"
+            >
+                <div class="field">
+                    <p class="control">
+                        <label class="label">Email</label>
+                        <input 
+                            v-model="login_credentials.login_email"
+                            class="input" 
+                            type="email" 
+                            placeholder="Email"
+                            required
+                        >
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </p>
                 </div>
-                <p v-if="false" class="help is-dark">This email is invalid</p>
+                <div class="field">
+                    <p class="control">
+                        <label class="label">Password</label>
+                        <input 
+                            v-model="login_credentials.login_password"
+                            class="input" 
+                            type="password" 
+                            placeholder="Password"
+                            required
+                        >
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                    </p>
+                </div>
             </div>
-            <div class="field">
-                <label class="label">Password</label>
-                <p class="control has-icons-left">
-                    <input 
-                        v-model="register_credentials.password"
-                        class="input" 
-                        type="password" 
-                        placeholder="Password"
-                    >
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-lock"></i>
-                    </span>
-                </p>
+
+             <div 
+                v-else
+                class="p-3"
+            >
+                <div class="field">
+                    <p class="control">
+                        <label class="label">Email</label>
+                        <input 
+                            v-model="register_credentials.email"
+                            class="input" 
+                            type="email" 
+                            placeholder="Email"
+                            required
+                        >
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </p>
+                </div>
+                <div class="field">
+                    <p class="control">
+                        <label class="label">Password</label>
+                        <input 
+                            v-model="register_credentials.password"
+                            class="input" 
+                            type="password" 
+                            placeholder="Password"
+                            required
+                        >
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                    </p>
+                </div>
             </div>
-        </div>
-        <div class="field is-grouped is-flex is-justify-content-center mt-4">
-            <div class="control">
-                <button type="submit" class="button is-dark is-rounded">{{ formattedName }}</button>
+        
+        <!-- Register -->
+            <!-- <div v-else>
+                <div class="field">
+                    <label class="label">Email</label>
+                    <div class="control has-icons-right">
+                        <input 
+                            
+                            v-model="register_credentials.email"
+                            class="input is-dark" 
+                            type="email" 
+                            placeholder="Email input"
+                        >
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </span>
+                    </div>
+                    <p v-if="false" class="help is-dark">This email is invalid</p>
+                </div>
+                <div class="field">
+                    <label class="label">Password</label>
+                    <p class="control">
+                        <input 
+                            v-model="register_credentials.password"
+                            class="input" 
+                            type="password" 
+                            placeholder="Password"
+                        >
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                    </p>
+                </div>
+            </div> -->
+            <div class="field is-grouped is-flex is-justify-content-center mt-4 pb-4">
+                <div class="control">
+                    <button type="submit" class="button is-dark is-rounded">{{ formattedName }}</button>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
+
+    <Spacer size="100px" />
 
 </template>
 
 <script setup>
 import { computed, reactive, ref } from 'vue';
 import { useStoreAuth } from '@/stores/useStoreAuth';
+import Spacer from '@/components/Layout/Spacer.vue';
 
 const register = ref(false);
 

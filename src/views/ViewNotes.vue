@@ -35,8 +35,7 @@
     </div>
     <!-- Modals -->
     <ModalDeleteNote v-if="delete_note" @yes="confirmDelete" @no="delete_note = false" />
-    <div style="height:400px;">
-    </div>
+    <Spacer size="400px" />
 </template>
 
 <script setup>
@@ -48,6 +47,8 @@ import { useWatchCharacters } from '@/use/useWatchCharacters.js';
 import Note from '@/components/Notes/Note.vue';
 import AddEditNote from '@/components/Notes/AddEditNote.vue';
 import ModalDeleteNote from '@/components/Notes/ModalDeleteNote.vue';
+
+import Spacer from '@/components/Layout/Spacer.vue';
 
 const storeNotes = useStoreNotes();
 const new_note = ref('');

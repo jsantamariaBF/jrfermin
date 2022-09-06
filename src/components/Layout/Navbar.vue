@@ -1,18 +1,18 @@
 <template>
-    <!-- <nav 
-        class="navbar has-text-black" 
+    <nav 
+        class="navbar is-fixed-top has-text-black has-background-light has-box-shadow" 
         role="navigation" 
         aria-label="main navigation"
     >
         <div class="container is-max-desktop">
             <div class="navbar-brand">
-                <router-link :to="'/'" class="navbar-item is-size-3 is-family-monospace">
-                    J.R Fermín
+                <router-link :to="'/'" class="navbar-item has-text-dark is-size-3 is-family-monospace is-unselectable">
+                    J.R F
                 </router-link>
                 <a  
                     @click.prevent="showMobileNav = !showMobileNav"
                     role="button" 
-                    class="navbar-burger" 
+                    class="navbar-burger has-text-dark" 
                     :class="{ 'is-active' : showMobileNav }"
                     aria-label="menu" 
                     aria-expanded="false" 
@@ -24,6 +24,7 @@
                     <span aria-hidden="true"></span>
                 </a>
             </div>
+             
 
             <div 
                 id="navbarBasicExample" 
@@ -31,42 +32,66 @@
                 :class="{ 'is-active' : showMobileNav }"
                 ref="navbarMenuRef"
             >
-                <div class="navbar-start">
+                <div class="navbar-end is-flex is-align-items-center">
+
+                    
                     <router-link 
                         @click="showMobileNav = false"
                         to="/"
-                        class="navbar-item"
-                        active-class="is-active"
+                        class="ml-6 has-text-dark is-unselectable"
+                        :class="[showMobileNav ? 'has-text-dark' : 'navbar-item']"
+                        active-class="is-active navbar-item"
                     >
-                        Notes
+                        #Notes
                     </router-link>
 
                     <router-link 
                         @click="showMobileNav = false"
                         to="/stats"
-                        class="navbar-item"
-                        active-class="is-active"
+                        class="ml-6 has-text-dark is-unselectable"
+                        :class="[showMobileNav ? 'has-text-dark' : 'navbar-item']"
+                        active-class="is-active navbar-item"
                     >
-                        Stats
+                        #YoSoloDigo
                     </router-link>
                     <router-link
+                        v-if="!storeAuth.user.id"
                         @click="showMobileNav = false" 
                         :to="{name: 'Auth'}"
-                        class="navbar-item"
-                        active-class="is-active"
+                        class="ml-6 has-text-dark is-unselectable"
+                        :class="[showMobileNav ? 'has-text-dark' : 'navbar-item']"
+                        active-class="is-active navbar-item"
                     >
-                        Login
+                        #Login
                     </router-link>
+                    <div
+                        v-if="storeAuth.user.id"
+                        @click="logout" 
+                        class="has-text-black ml-6 is-clickable is-unselectable"
+                        :class="[showMobileNav ? 'has-text-dark' : 'navbar-item']"
+                        active-class="is-active navbar-item"
+                    >
+                        #Logout
+                    </div>
                 </div>
             </div>
         </div>
-    </nav> -->
+    </nav>
+    <Spacer size="4.5rem"/>
+
+    <div class="notification has-text-centered" style="">
+        <img class="blurred is-unselectable" style="border-radius:5%; display:inline-block;" width="700" height="200" src="../../assets/picture-jesus2.jpeg" alt="header-img">
+        <h3 class="is-size-2 is-family-monospace has-text-shadow is-unselectable">J.R Fermín</h3>
+        <h3 class="is-size-4 has-text-grey is-unselectable">Artista Esencial</h3>
+        <h3 class="is-size-5 has-text-grey is-unselectable">#Cine / #Teatro / #Arte</h3>
+    </div>
+    <hr class="has-background-grey-lighter">
     
-    <div class="container is-max-desktop has-text-centered is-family-monospace">
+    <!-- <div class="container is-max-desktop has-text-centered is-family-monospace">
         <div class="notification">
-            <img style="border-radius:5%; display:inline-block;" width="200" height="200" src="../../assets/header-img.png" alt="header-img">
-            <h3 class="is-size-1">Yo Solo Digo</h3>
-            <h3 class="is-size-4 has-text-grey">J.R Fermín</h3>
+            <img style="border-radius:5%; display:inline-block;" width="500" height="200" src="../../assets/picture-jesus2.jpeg" alt="header-img">
+            <h3 class="is-size-1">J.R Fermín</h3>
+            <h3 class="is-size-4 has-text-grey">Artista Esencial</h3>
             <h3 class="is-size-5 has-text-grey">#Cine / #Teatro / #Arte</h3>
             
             
@@ -115,7 +140,7 @@
 
             
         </p>
-    </div>
+    </div> -->
 
 
 </template>
@@ -125,6 +150,7 @@ import { ref } from 'vue';
 
 import { onClickOutside } from '@vueuse/core';
 import { useStoreAuth } from '@/stores/useStoreAuth';
+import Spacer from '@/components/Layout/Spacer.vue';
 
 // mobile nav
 const showMobileNav = ref(false);
@@ -154,5 +180,17 @@ function logout() {
             left: 0;
             width: 100%;
         }
+    }
+
+    .navbar-item:hover {
+        background-color: #ebe7e7
+    }
+
+    a.navbar-item.is-active {
+        color: black;
+    }
+
+    .blurred {
+        box-shadow: 17px 17px 10px rgb(233, 232, 232);
     }
 </style>
