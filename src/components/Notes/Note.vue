@@ -1,73 +1,4 @@
 <template>
-    <!-- <div class="card mb-3 p-2">
-        <div class="card-content">
-            <div class="content">
-            {{ note.content }}
-            </div>
-        </div>
-         <div class="is-flex is-align-items-flex-end is-flex-direction-column has-text-grey-light mt-2">
-            <label class=""> {{ characterLength }} </label> <br>
-            <label class=""> {{ dateFormatted }} </label>
-        </div>
-        <footer class="card-footer is-flex is-justify-content-flex-end">
-            <div class="mt-4">
-                <router-link 
-                :to="`/editNote/${note.id}`"
-                class=" button is-rounded is-size-6 has-background-grey-dark has-text-white has-text-weight-semibold mr-1">
-                    Edit
-                </router-link>
-                <button 
-                    @click.prevent="deleteNote" 
-                    class="button is-rounded is-size-6 has-background-grey-light has-text-weight-semibold"
-                >
-                    Delete
-                </button>
-            </div>
-        </footer>
-    </div> -->
-
-    <!-- <div class="card">
-        <div class="card-image">
-            <figure class="image">
-                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-            </figure>
-        </div>
-        <div class="card-content">
-            <div class="media">
-                <div class="media-left">
-                    <figure class="image is-48x48">
-                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-                    </figure>
-                </div>
-                <div class="media-content">
-                    <p class="title is-4">John Smith</p>
-                    <p class="subtitle is-6">@johnsmith</p>
-                </div>
-            </div>
-
-            <div class="content">
-                 {{ note.content }}
-                <br>
-                <label class=""> {{ characterLength }} </label> <br>
-                <label class=""> {{ dateFormatted }} </label>
-            </div>
-
-            <div class="mt-4">
-                <router-link 
-                :to="`/editNote/${note.id}`"
-                class=" button is-rounded is-size-6 has-background-grey-dark has-text-white has-text-weight-semibold mr-1">
-                    Edit
-                </router-link>
-                <button 
-                    @click.prevent="deleteNote" 
-                    class="button is-rounded is-size-6 has-background-grey-light has-text-weight-semibold"
-                >
-                    Delete
-                </button>
-            </div>
-        </div>
-    </div> -->
-
     <div @click.prevent="" class="card is-clickable">
         <div class="card-content">
             <div class="has-text-centered">
@@ -86,11 +17,13 @@
             </div>
             <div class="mt-4 has-text-right">
                 <router-link 
+                v-if="storeAuth.user.isAdmin"
                 :to="`/editNote/${note.id}`"
                 class="button is-rounded is-size-6 has-background-grey-dark has-text-white has-text-weight-semibold mr-1">
                     Edit
                 </router-link>
                 <button 
+                    v-if="storeAuth.user.isAdmin"
                     @click.prevent="deleteNote" 
                     class="button is-rounded is-size-6 has-background-grey-light has-text-weight-semibold"
                 >
@@ -106,6 +39,9 @@
 import { computed } from 'vue';
 import { useDateFormat } from '@vueuse/core'
 
+import { useStoreAuth } from '@/stores/useStoreAuth';
+
+const storeAuth = useStoreAuth();
 const props = defineProps({
     note: {
         type: Object,

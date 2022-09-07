@@ -1,5 +1,6 @@
 <template>
     <AddEditNote 
+        v-if="storeAuth.user.isAdmin"
         v-model="new_note" 
         :bgColor='"white"'
     >
@@ -30,17 +31,20 @@
             </div>
         </section>
     </template>
+    <p></p>
     <div v-if="!storeNotes.notes.length && storeNotes.notesLoaded">
         <h2>There are not notes.</h2>
     </div>
+
     <!-- Modals -->
     <ModalDeleteNote v-if="delete_note" @yes="confirmDelete" @no="delete_note = false" />
-    <Spacer size="400px" />
+    <Spacer size="60rem" />
 </template>
 
 <script setup>
 import { ref, watch } from 'vue';
 
+import { useStoreAuth } from '@/stores/useStoreAuth';
 import { useStoreNotes } from '@/stores/useStoreNotes';
 import { useWatchCharacters } from '@/use/useWatchCharacters.js';
 
@@ -49,6 +53,8 @@ import AddEditNote from '@/components/Notes/AddEditNote.vue';
 import ModalDeleteNote from '@/components/Notes/ModalDeleteNote.vue';
 
 import Spacer from '@/components/Layout/Spacer.vue';
+
+const storeAuth = useStoreAuth();
 
 const storeNotes = useStoreNotes();
 const new_note = ref('');

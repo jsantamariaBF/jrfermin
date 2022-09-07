@@ -32,14 +32,12 @@
                 :class="{ 'is-active' : showMobileNav }"
                 ref="navbarMenuRef"
             >
-                <div class="navbar-end is-flex is-align-items-center">
-
-                    
+                <div class="navbar-end is-flex is-align-items-center is-justify-content-space-around">
                     <router-link 
                         @click="showMobileNav = false"
                         to="/"
-                        class="ml-6 has-text-dark is-unselectable"
-                        :class="[showMobileNav ? 'has-text-dark' : 'navbar-item']"
+                        class="has-text-dark is-unselectable"
+                        :class="[showMobileNav ? 'has-text-dark ml-3' : 'navbar-item ml-6']"
                         active-class="is-active navbar-item"
                     >
                         #Notes
@@ -48,8 +46,8 @@
                     <router-link 
                         @click="showMobileNav = false"
                         to="/stats"
-                        class="ml-6 has-text-dark is-unselectable"
-                        :class="[showMobileNav ? 'has-text-dark' : 'navbar-item']"
+                        class="has-text-dark is-unselectable"
+                        :class="[showMobileNav ? 'has-text-dark ml-0' : 'navbar-item ml-6 ']"
                         active-class="is-active navbar-item"
                     >
                         #YoSoloDigo
@@ -58,8 +56,8 @@
                         v-if="!storeAuth.user.id"
                         @click="showMobileNav = false" 
                         :to="{name: 'Auth'}"
-                        class="ml-6 has-text-dark is-unselectable"
-                        :class="[showMobileNav ? 'has-text-dark' : 'navbar-item']"
+                        class="has-text-dark is-unselectable"
+                        :class="[showMobileNav ? 'has-text-dark ml-0' : 'navbar-item ml-6']"
                         active-class="is-active navbar-item"
                     >
                         #Login
@@ -67,8 +65,8 @@
                     <div
                         v-if="storeAuth.user.id"
                         @click="logout" 
-                        class="has-text-black ml-6 is-clickable is-unselectable"
-                        :class="[showMobileNav ? 'has-text-dark' : 'navbar-item']"
+                        class="has-text-black is-clickable is-unselectable"
+                        :class="[showMobileNav ? 'has-text-dark ml-0' : 'navbar-item ml-6']"
                         active-class="is-active navbar-item"
                     >
                         #Logout
@@ -83,66 +81,10 @@
         <img class="blurred is-unselectable" style="border-radius:5%; display:inline-block;" width="700" height="200" src="../../assets/picture-jesus2.jpeg" alt="header-img">
         <h3 class="is-size-2 is-family-monospace has-text-shadow is-unselectable">J.R Fermín</h3>
         <h3 class="is-size-4 has-text-grey is-unselectable">Artista Esencial</h3>
-        <h3 class="is-size-5 has-text-grey is-unselectable">#Cine / #Teatro / #Arte</h3>
+        <h3 class="is-size-6 has-text-grey is-unselectable">#Cine #Teatro #Arte</h3>
     </div>
     <hr class="has-background-grey-lighter">
     
-    <!-- <div class="container is-max-desktop has-text-centered is-family-monospace">
-        <div class="notification">
-            <img style="border-radius:5%; display:inline-block;" width="500" height="200" src="../../assets/picture-jesus2.jpeg" alt="header-img">
-            <h3 class="is-size-1">J.R Fermín</h3>
-            <h3 class="is-size-4 has-text-grey">Artista Esencial</h3>
-            <h3 class="is-size-5 has-text-grey">#Cine / #Teatro / #Arte</h3>
-            
-            
-        </div>
-        <hr class="has-background-grey-lighter">
-        <p class="panel-tabs is-justify-content-space-around">
-            
-            <router-link 
-                @click="showMobileNav = false"
-                to="/"
-                class="has-text-black has-background-light is-size-6"
-                active-class="is-active"
-            >
-                Home
-            </router-link>
-
-            <router-link 
-                @click="showMobileNav = false"
-                to="/stats"
-                class="has-text-black is-size-6"
-                active-class="is-active"
-            >
-                Stats
-            </router-link>
-
-            <router-link
-                v-if="!storeAuth.user.id"
-                @click="showMobileNav = false" 
-                :to="{name: 'Auth'}"
-                class="has-text-black is-size-6"
-                active-class="is-active"
-            >
-                Login
-            </router-link>
-
-            <div class="navbar-start">
-                <button
-                    v-if="storeAuth.user.id"
-                    @click="logout" 
-                    class="button is-rounded has-text-black is-size-6"
-                    active-class="is-active"
-                >
-                    Logout
-                </button>
-            </div>
-
-            
-        </p>
-    </div> -->
-
-
 </template>
 
 <script setup>

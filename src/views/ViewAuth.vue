@@ -144,7 +144,7 @@
         </form>
     </div>
 
-    <Spacer size="100px" />
+    <Spacer size="20rem" />
 
 </template>
 

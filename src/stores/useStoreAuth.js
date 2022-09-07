@@ -1,3 +1,4 @@
+import { computed } from 'vue';
 import { defineStore } from 'pinia';
 import { getAuth, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
 import { auth } from '@/js/firebase';
@@ -12,11 +13,20 @@ export const useStoreAuth = defineStore('useStoreAuth', {
   },
   actions: {
     init() {
-       const storeNotes = useStoreNotes();
+        const storeNotes = useStoreNotes();
+        const white_list = [
+            'H6S2GLqOtKUaUxPWD4VCxx1RNkO2',
+        ];
         onAuthStateChanged(auth, (user) => {
+            const isAdmin = computed(() => {
+                return white_list.includes(user.uid) ? 
+                this.user.isAdmin = true :
+                this.user.isAdmin = false;
+            }); 
             if (user) {
                 this.user.id = user.uid;
                 this.user.email = user.email;
+                isAdmin.value;
                 this.router.push('/');
                 storeNotes.init();
             } else {
@@ -27,17 +37,21 @@ export const useStoreAuth = defineStore('useStoreAuth', {
         });
     },
     registerUser(credentials) {
-        createUserWithEmailAndPassword(auth, credentials.email, credentials.password)
+        createUserWithEmailAndPassword(
+            auth, 
+            credentials.email, 
+            credentials.password, 
+        )
         .then((userCredential) => {
             // user registration successful
             const user = userCredential.user;
+            console.log(userCredential);
         })
         .catch((error) => {
             console.log(error);
         });
     },
     loginUser(credentials) {
-        console.log(credentials);
         signInWithEmailAndPassword(auth, credentials.login_email, credentials.login_password)
         .then((userCredential) => {
             // Signed in 
