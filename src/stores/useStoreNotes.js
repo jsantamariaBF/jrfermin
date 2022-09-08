@@ -5,7 +5,7 @@ import {
   query, orderBy 
 } 
 from "firebase/firestore";
-import { useStoreAuth } from '@/stores/useStoreAuth';
+// import { useStoreAuth } from '@/stores/useStoreAuth';
 import { db } from '@/js/firebase';
 
 /* CONSTANTS */
@@ -23,8 +23,11 @@ export const useStoreNotes = defineStore('useStoreNotes', {
   },
   actions: {
     init() {
+      /* this should be used to display notes for each user only 
       const storeAuth = useStoreAuth();
-      notesCollectionRef = collection(db, 'users', storeAuth.user.id, 'notes');
+      notesCollectionRef = collection(db, 'users', storeAuth.user.id, 'notes'); 
+      */
+      notesCollectionRef = collection(db, 'notes');
       notesCollectionQuery = query(notesCollectionRef, orderBy("date", "desc"));  
     
       this.getNotes();

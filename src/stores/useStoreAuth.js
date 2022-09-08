@@ -3,7 +3,7 @@ import { defineStore } from 'pinia';
 import { getAuth, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
 import { auth } from '@/js/firebase';
 import { useStoreNotes } from '@/stores/useStoreNotes';
-
+import { white_list } from './admin/whitelist';
 
 export const useStoreAuth = defineStore('useStoreAuth', {
   state: () => {
@@ -14,9 +14,7 @@ export const useStoreAuth = defineStore('useStoreAuth', {
   actions: {
     init() {
         const storeNotes = useStoreNotes();
-        const white_list = [
-            'H6S2GLqOtKUaUxPWD4VCxx1RNkO2',
-        ];
+      
         onAuthStateChanged(auth, (user) => {
             const isAdmin = computed(() => {
                 return white_list.includes(user.uid) ? 

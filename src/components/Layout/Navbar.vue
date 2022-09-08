@@ -6,8 +6,8 @@
     >
         <div class="container is-max-desktop">
             <div class="navbar-brand">
-                <router-link :to="'/'" class="navbar-item has-text-dark is-size-3 is-family-monospace is-unselectable">
-                    J.R F
+                <router-link :to="'/'" class="navbar-item has-text-dark is-size-3 is-family-monospace is-unselectable has-text-weight-bold">
+                    J.R.F
                 </router-link>
                 <a  
                     @click.prevent="showMobileNav = !showMobileNav"
@@ -37,7 +37,7 @@
                         @click="showMobileNav = false"
                         to="/"
                         class="has-text-dark is-unselectable"
-                        :class="[showMobileNav ? 'has-text-dark ml-3' : 'navbar-item ml-6']"
+                        :class="[showMobileNav ? 'has-text-dark' : 'navbar-item ml-6']"
                         active-class="is-active navbar-item"
                     >
                         #Notes
@@ -47,7 +47,7 @@
                         @click="showMobileNav = false"
                         to="/stats"
                         class="has-text-dark is-unselectable"
-                        :class="[showMobileNav ? 'has-text-dark ml-0' : 'navbar-item ml-6 ']"
+                        :class="[showMobileNav ? 'has-text-dark' : 'navbar-item ml-6 ']"
                         active-class="is-active navbar-item"
                     >
                         #YoSoloDigo
@@ -57,7 +57,7 @@
                         @click="showMobileNav = false" 
                         :to="{name: 'Auth'}"
                         class="has-text-dark is-unselectable"
-                        :class="[showMobileNav ? 'has-text-dark ml-0' : 'navbar-item ml-6']"
+                        :class="[showMobileNav ? 'has-text-dark' : 'navbar-item ml-6']"
                         active-class="is-active navbar-item"
                     >
                         #Login
@@ -66,7 +66,7 @@
                         v-if="storeAuth.user.id"
                         @click="logout" 
                         class="has-text-black is-clickable is-unselectable"
-                        :class="[showMobileNav ? 'has-text-dark ml-0' : 'navbar-item ml-6']"
+                        :class="[showMobileNav ? 'has-text-dark' : 'navbar-item ml-6']"
                         active-class="is-active navbar-item"
                     >
                         #Logout
@@ -79,7 +79,7 @@
 
     <div class="notification has-text-centered" style="">
         <img class="blurred is-unselectable" style="border-radius:5%; display:inline-block;" width="700" height="200" src="../../assets/picture-jesus2.jpeg" alt="header-img">
-        <h3 class="is-size-2 is-family-monospace has-text-shadow is-unselectable">J.R Fermín</h3>
+        <h3 class="is-size-2 is-family-monospace has-text-shadow is-unselectable" style="letter-spacing: 0rem;">J.R.Fermín</h3>
         <h3 class="is-size-4 has-text-grey is-unselectable">Artista Esencial</h3>
         <h3 class="is-size-6 has-text-grey is-unselectable">#Cine #Teatro #Arte</h3>
     </div>
