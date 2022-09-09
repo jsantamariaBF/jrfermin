@@ -1,10 +1,10 @@
 <template>
    <div>
         <button @click="router.go(-1)">Go back</button>
-        <div>
-            <p>{{content}}</p>
+        <div v-html="content">
         </div>
     </div>
+    
 </template>
 
 <script setup>

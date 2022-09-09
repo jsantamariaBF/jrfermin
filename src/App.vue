@@ -46,4 +46,21 @@ onMounted(() => {
     3px 3px 1px #ccc, 3px 4px 1px #eee,
     5px 3px 1px #ccc;
   }
+
+  .ql-align-center {
+    text-align: center;
+  }
+
+  .ql-align-right {
+    text-align: right;
+  }
+
+  .ql-align-left {
+    text-align: left;
+  }
+  
+  .ql-align-justify {
+    text-align: justify;
+  }
+
 </style>

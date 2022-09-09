@@ -6,12 +6,11 @@
             </div>
             <div class="media mt-3">
                 <div class="media-content">
-                    <h3 class=""><strong>{{ note.title || '' }}</strong></h3>
-                    <p class="subtitle is-6">{{ note.subtitle || '' }}</p>
+                    <h3 class=""><strong v-html="note.title"></strong></h3>
+                    <p v-html="note.subtitle " class="subtitle is-6"></p>
                 </div>
             </div>
-            <div class="content">
-                {{ noteContentFormatted }}
+            <div v-html="noteContentFormatted" class="content">
             </div>
         </div>
         <div class="mt-4 has-text-right">
@@ -47,7 +46,6 @@ const props = defineProps({
         required: true,
     },
 });
-// console.log(props.note);
 const router = useRouter()
 
 /* Date formatted */
