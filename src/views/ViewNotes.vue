@@ -42,11 +42,11 @@
 
     <!-- Modals -->
     <ModalDeleteNote v-if="delete_note" @yes="confirmDelete" @no="delete_note = false" />
-    <Spacer size="60rem" />
+    <Spacer size="10rem" />
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import { useRouter, useRoute } from 'vue-router'
 
 import { useStoreAuth } from '@/stores/useStoreAuth';
@@ -67,6 +67,10 @@ const storeNotes = useStoreNotes();
 const new_note = ref('');
 const delete_note = ref(false);
 let note_id;
+
+onMounted(() =>{
+   storeNotes.init(); 
+});
 
 function addNote() {
     storeNotes.addNotes(new_note.value);

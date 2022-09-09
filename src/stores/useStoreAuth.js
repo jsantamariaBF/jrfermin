@@ -29,8 +29,7 @@ export const useStoreAuth = defineStore('useStoreAuth', {
                 storeNotes.init();
             } else {
                 this.user = {};
-                this.router.push('/auth');
-                storeNotes.clearNotes();
+                this.router.push({name:'Home'});
             }
         });
     },

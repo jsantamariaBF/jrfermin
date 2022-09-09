@@ -1,6 +1,5 @@
 <template>
   <Navbar />
-  
   <div class="container py-4 has-background-light">
     <RouterView />  
   </div>
@@ -14,13 +13,15 @@ import Navbar from '@/components/Layout/Navbar.vue';
 import Footer from '@/components/Layout/Footer.vue';
 
 import { useStoreAuth } from '@/stores/useStoreAuth';
+import { useStoreNotes } from '@/stores/useStoreNotes';
 import { onMounted } from '@vue/runtime-core';
 
 const storeAuth = useStoreAuth();
+const storeNote = useStoreNotes();
 
 onMounted(() => {
   storeAuth.init();
-
+  storeNote.init();
 });
 
 </script> 
@@ -63,4 +64,15 @@ onMounted(() => {
     text-align: justify;
   }
 
+  /* TRANSITIONS */
+
+  .v-enter-active,
+  .v-leave-active {
+    transition: opacity 0.5s ease;
+  }
+
+  .v-enter-from,
+  .v-leave-to {
+    opacity: 0;
+  }
 </style>

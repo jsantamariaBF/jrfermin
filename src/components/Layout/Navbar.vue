@@ -52,16 +52,15 @@
                     >
                         #YoSoloDigo
                     </router-link>
-                    <router-link
+                    <div
                         v-if="!storeAuth.user.id"
-                        @click="showMobileNav = false" 
-                        :to="{name: 'Auth'}"
-                        class="has-text-dark is-unselectable"
+                        @click="showAuthModal" 
+                        class="has-text-dark is-clickable  is-unselectable"
                         :class="[showMobileNav ? 'has-text-dark' : 'navbar-item ml-6']"
                         active-class="is-active navbar-item"
                     >
                         #Login
-                    </router-link>
+                    </div>
                     <div
                         v-if="storeAuth.user.id"
                         @click="logout" 
@@ -84,15 +83,20 @@
         <h3 class="is-size-6 has-text-grey is-unselectable">#Cine #Teatro #Arte</h3>
     </div>
     <hr class="has-background-grey-lighter">
-    
+
+    <!-- Modals -->
+    <Transition>
+        <AuthModal v-if="modal.auth" @close="modal.auth = null" />
+    </Transition>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, reactive } from 'vue';
 
 import { onClickOutside } from '@vueuse/core';
 import { useStoreAuth } from '@/stores/useStoreAuth';
 import Spacer from '@/components/Layout/Spacer.vue';
+import AuthModal from '@/components/Layout/AuthModal.vue';
 
 // mobile nav
 const showMobileNav = ref(false);
@@ -101,6 +105,9 @@ const navbarBurgerRef = ref(false);
 
 // store
 const storeAuth = useStoreAuth();
+const modal = reactive({
+    auth: false,
+});
 
 onClickOutside(navbarMenuRef, () => {
     showMobileNav.value = false
@@ -108,10 +115,15 @@ onClickOutside(navbarMenuRef, () => {
     ignore: [navbarBurgerRef]
 });
 
+function showAuthModal() {
+    showMobileNav.value = false;
+    modal.auth = true;
+};
+
 function logout() {
     showMobileNav.value = false;
     storeAuth.logoutUser();
-}
+};
 
 </script>
 
