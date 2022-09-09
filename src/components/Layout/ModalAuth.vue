@@ -3,7 +3,7 @@
         <div class="modal-background"></div>
         <div ref="modalBackground" class="modal-content has-background-light">
             
-            <div class="is-flex is-justify-content-center">
+            <div class="is-flex is-justify-content-center py-3">
                 <ul class="is-flex is-justify-content-space-between">
                     <li 
                         class="is-clickable"
@@ -22,9 +22,9 @@
                     <li 
                         class="has-text-weight-semibold is-clickable"
                         @click="$emit('close')"  
-                        style="position:absolute; right:1rem;"
+                        style="position:absolute; right:1.5rem;"
                     > 
-                        <p>X</p>
+                        <p><strong>X</strong></p>
                     </li>
                 </ul>
             </div>
