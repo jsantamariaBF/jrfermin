@@ -45,7 +45,7 @@
 
                     <router-link 
                         @click="showMobileNav = false"
-                        to="/stats"
+                        to="/yosolodigo"
                         class="has-text-dark is-unselectable"
                         :class="[showMobileNav ? 'has-text-dark' : 'navbar-item ml-6 ']"
                         active-class="is-active navbar-item"

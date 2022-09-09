@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import ViewNotes from '../views/ViewNotes.vue'
 import EditNote from '../views/EditNote.vue'
-import Stats from '../views/Stats.vue'
+import YoSoloDigo from '../views/YoSoloDigo.vue'
 import NoteView from '../views/NoteView.vue'
 import { useStoreAuth } from '../stores/useStoreAuth'
 
@@ -25,9 +25,9 @@ const router = createRouter({
       props: true,
     },
     {
-      path: '/stats',
-      name: 'Stats',
-      component: Stats
+      path: '/yosolodigo',
+      name: 'YoSoloDigo',
+      component: YoSoloDigo
     },
     {
       path: '/about',
@@ -41,7 +41,7 @@ const router = createRouter({
 router.beforeEach(async (to, from) => {
   const storeAuth = useStoreAuth();
 
-  if(!storeAuth.user.id && to.name === 'Stats') return { name: 'Home' };
+  if(!storeAuth.user.id && to.name === 'YoSoloDigo') return { name: 'Home' };
 
   // if (storeAuth.user.id && to.name === 'Auth') return { name: 'Home' }
 })
