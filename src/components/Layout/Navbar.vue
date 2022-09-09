@@ -32,12 +32,12 @@
                 :class="{ 'is-active' : showMobileNav }"
                 ref="navbarMenuRef"
             >
-                <div class="navbar-end is-flex is-align-items-center is-justify-content-space-around">
+                <div class="navbar-end is-flex is-justify-content-space-around is-flex-wrap-wrap" style="display:flex; align-items:center;">
                     <router-link 
                         @click="showMobileNav = false"
                         to="/"
                         class="has-text-dark is-unselectable"
-                        :class="[showMobileNav ? 'has-text-dark' : 'navbar-item ml-6']"
+                        :class="[showMobileNav ? 'has-text-dark' : 'navbar-item']"
                         active-class="is-active navbar-item"
                     >
                         #Notes
