@@ -1,6 +1,13 @@
 <template>
    <div>
-        <button @click="router.go(-1)">Go back</button>
+        <button 
+            class="button is-rounded has-background-grey has-text-light" 
+            @click="router.go(-1)"
+        >
+            Go back
+        </button>
+        <Spacer size="5rem" />
+
         <div v-html="content">
         </div>
     </div>
@@ -8,6 +15,7 @@
 </template>
 
 <script setup>
+import Spacer from '@/components/Layout/Spacer.vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();

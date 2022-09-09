@@ -54,7 +54,7 @@
                     </router-link>
                     <div
                         v-if="!storeAuth.user.id"
-                        @click="showAuthModal" 
+                        @click="showModalAuth" 
                         class="has-text-dark is-clickable  is-unselectable"
                         :class="[showMobileNav ? 'has-text-dark' : 'navbar-item ml-6']"
                         active-class="is-active navbar-item"
@@ -86,7 +86,7 @@
 
     <!-- Modals -->
     <Transition>
-        <AuthModal v-if="modal.auth" @close="modal.auth = null" />
+        <ModalAuth v-if="modal.auth" @close="modal.auth = null" />
     </Transition>
 </template>
 
@@ -96,7 +96,7 @@ import { ref, reactive } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 import { useStoreAuth } from '@/stores/useStoreAuth';
 import Spacer from '@/components/Layout/Spacer.vue';
-import AuthModal from '@/components/Layout/AuthModal.vue';
+import ModalAuth from '@/components/Layout/ModalAuth.vue';
 
 // mobile nav
 const showMobileNav = ref(false);
@@ -115,7 +115,7 @@ onClickOutside(navbarMenuRef, () => {
     ignore: [navbarBurgerRef]
 });
 
-function showAuthModal() {
+function showModalAuth() {
     showMobileNav.value = false;
     modal.auth = true;
 };

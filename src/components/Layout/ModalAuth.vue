@@ -1,28 +1,30 @@
 <template>
     <div class="modal is-active">
         <div class="modal-background"></div>
-        <div ref="modalBackground" class="modal-content has-background-white">
+        <div ref="modalBackground" class="modal-content has-background-light">
             
-            <div class="tabs is-centered">
-                <ul class="is-flex has-justify-content-center">
+            <div class="is-flex is-justify-content-center">
+                <ul class="is-flex is-justify-content-space-between">
                     <li 
+                        class="is-clickable"
                         :class="{'has-text-weight-semibold' : !register}"
                         @click="register = false"  
                     >
-                        <a>Login</a>
+                        <p>Login</p>
                     </li>
                     <li 
+                        class="ml-5 is-clickable"
                         :class="{'has-text-weight-semibold' : register}"
                         @click="register = true"  
                     >
-                        <a>Register</a>
+                        <p>Register</p>
                     </li>
                     <li 
-                        class="has-text-weight-semibold"
+                        class="has-text-weight-semibold is-clickable"
                         @click="$emit('close')"  
-                        style="position:absolute; right:0;"
+                        style="position:absolute; right:1rem;"
                     > 
-                        <a>X</a>
+                        <p>X</p>
                     </li>
                 </ul>
             </div>
@@ -156,3 +158,7 @@ function onSubmit() {
 };
 
 </script>
+
+<style scoped>
+
+</style>

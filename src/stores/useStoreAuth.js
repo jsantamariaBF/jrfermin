@@ -9,6 +9,7 @@ export const useStoreAuth = defineStore('useStoreAuth', {
   state: () => {
     return { 
         user: {},
+        error: false,
     };
   },
   actions: {
@@ -30,6 +31,7 @@ export const useStoreAuth = defineStore('useStoreAuth', {
             } else {
                 this.user = {};
                 this.router.push({name:'Home'});
+
             }
         });
     },
@@ -56,6 +58,10 @@ export const useStoreAuth = defineStore('useStoreAuth', {
         })
         .catch((error) => {
             console.log(error);
+            this.error = true;
+            setTimeout(() => {
+            this.error = false;
+            }, 2000);
         });
     },
     logoutUser() {

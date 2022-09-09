@@ -42,6 +42,11 @@
 
     <!-- Modals -->
     <ModalDeleteNote v-if="delete_note" @yes="confirmDelete" @no="delete_note = false" />
+    <Transition>
+        <ModalError v-if="storeAuth.error" />
+    </Transition>
+
+    
     <Spacer size="10rem" />
 </template>
 
@@ -56,6 +61,7 @@ import { useWatchCharacters } from '@/use/useWatchCharacters.js';
 import Note from '@/components/Notes/Note.vue';
 import AddEditNote from '@/components/Notes/AddEditNote.vue';
 import ModalDeleteNote from '@/components/Notes/ModalDeleteNote.vue';
+import ModalError from '@/components/Layout/ModalError.vue';
 
 
 import Spacer from '@/components/Layout/Spacer.vue';
